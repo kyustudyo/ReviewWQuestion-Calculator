@@ -42,6 +42,7 @@ struct widthShordButton : View {
         }
         return (index - 3) % 4 == 0 ? .yellow : .brown
     }
+    
     var body: some View {
         Button {
             print(clickedComponent)
