@@ -16,6 +16,7 @@ struct CalculratorView: View {
 
         VStack(alignment:.trailing,spacing: 15){
             Spacer()
+            
             resultView(resultText: "\(logic.results)")
                 
             LazyVGrid(columns: fixedItems, alignment: .center, spacing: 20) {
@@ -76,4 +77,5 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+
 
