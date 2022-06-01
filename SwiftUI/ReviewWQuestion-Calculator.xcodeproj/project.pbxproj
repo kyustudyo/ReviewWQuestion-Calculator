@@ -10,11 +10,13 @@
 		44A52590283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5258F283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift */; };
 		44A52594283E540C00F39B89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44A52593283E540C00F39B89 /* Assets.xcassets */; };
 		44A52597283E540C00F39B89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44A52596283E540C00F39B89 /* Preview Assets.xcassets */; };
-		7991F9E82847B7B900DCAFB8 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 7991F9E52847B7B900DCAFB8 /* Preview Content */; };
 		7991F9E92847B7B900DCAFB8 /* CalculratorViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9E62847B7B900DCAFB8 /* CalculratorViewView.swift */; };
 		7991F9F02847B7FF00DCAFB8 /* TextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9EE2847B7FF00DCAFB8 /* TextModifiers.swift */; };
 		7991F9F12847B7FF00DCAFB8 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9EF2847B7FF00DCAFB8 /* ButtonModifiers.swift */; };
 		7991F9F32847B80500DCAFB8 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9F22847B80500DCAFB8 /* StaticData.swift */; };
+		7991F9F72847B95B00DCAFB8 /* LongButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9F52847B95B00DCAFB8 /* LongButton.swift */; };
+		7991F9F82847B95B00DCAFB8 /* ShortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9F62847B95B00DCAFB8 /* ShortButton.swift */; };
+		7991F9FA2847B97800DCAFB8 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9F92847B97800DCAFB8 /* Logic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +24,13 @@
 		44A5258F283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWQuestion_CalculatorApp.swift; sourceTree = "<group>"; };
 		44A52593283E540C00F39B89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44A52596283E540C00F39B89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7991F9E52847B7B900DCAFB8 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "../../../../Desktop/ReviewWQuestion-Calculator/SwiftUI/ReviewWQuestion-Calculator/Preview Content"; sourceTree = "<group>"; };
 		7991F9E62847B7B900DCAFB8 /* CalculratorViewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculratorViewView.swift; sourceTree = "<group>"; };
 		7991F9EE2847B7FF00DCAFB8 /* TextModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextModifiers.swift; sourceTree = "<group>"; };
 		7991F9EF2847B7FF00DCAFB8 /* ButtonModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 		7991F9F22847B80500DCAFB8 /* StaticData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
+		7991F9F52847B95B00DCAFB8 /* LongButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongButton.swift; sourceTree = "<group>"; };
+		7991F9F62847B95B00DCAFB8 /* ShortButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortButton.swift; sourceTree = "<group>"; };
+		7991F9F92847B97800DCAFB8 /* Logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,10 @@
 		44A5258E283E540B00F39B89 /* ReviewWQuestion-Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7991F9F42847B94B00DCAFB8 /* Buttons */,
 				7991F9EC2847B7F100DCAFB8 /* Helpers */,
-				44A5258F283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift */,
 				7991F9E62847B7B900DCAFB8 /* CalculratorViewView.swift */,
-				7991F9E52847B7B900DCAFB8 /* Preview Content */,
+				7991F9F92847B97800DCAFB8 /* Logic.swift */,
 				44A52593283E540C00F39B89 /* Assets.xcassets */,
 				44A52595283E540C00F39B89 /* Preview Content */,
 			);
@@ -80,6 +84,7 @@
 		7991F9EC2847B7F100DCAFB8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				44A5258F283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift */,
 				7991F9F22847B80500DCAFB8 /* StaticData.swift */,
 				7991F9ED2847B7F600DCAFB8 /* Modifiers */,
 			);
@@ -93,6 +98,15 @@
 				7991F9EE2847B7FF00DCAFB8 /* TextModifiers.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		7991F9F42847B94B00DCAFB8 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7991F9F52847B95B00DCAFB8 /* LongButton.swift */,
+				7991F9F62847B95B00DCAFB8 /* ShortButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7991F9E82847B7B900DCAFB8 /* Preview Content in Resources */,
 				44A52597283E540C00F39B89 /* Preview Assets.xcassets in Resources */,
 				44A52594283E540C00F39B89 /* Assets.xcassets in Resources */,
 			);
@@ -167,9 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7991F9F32847B80500DCAFB8 /* StaticData.swift in Sources */,
+				7991F9F72847B95B00DCAFB8 /* LongButton.swift in Sources */,
 				7991F9E92847B7B900DCAFB8 /* CalculratorViewView.swift in Sources */,
 				7991F9F02847B7FF00DCAFB8 /* TextModifiers.swift in Sources */,
+				7991F9FA2847B97800DCAFB8 /* Logic.swift in Sources */,
 				7991F9F12847B7FF00DCAFB8 /* ButtonModifiers.swift in Sources */,
+				7991F9F82847B95B00DCAFB8 /* ShortButton.swift in Sources */,
 				44A52590283E540B00F39B89 /* ReviewWQuestion_CalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
