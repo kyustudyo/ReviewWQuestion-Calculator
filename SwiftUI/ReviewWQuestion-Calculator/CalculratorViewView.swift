@@ -43,7 +43,9 @@ extension CalculratorView {
             
             if index == 16{
                 CalculratorView.widthLongButton()
+                
             }
+            
             else {
                 CalculratorView.widthShordButton(index: index)
             }
@@ -58,15 +60,24 @@ extension CalculratorView {
             if index < 3 {
                 return .gray
             }
+            else if index == 17 {
+                return .clear
+            }
             return (index - 3) % 4 == 0 ? .yellow : .brown
         }
         var body: some View {
-            ZStack{
-                Circle()
-                    .applyBasicButtonModifier(color:color)
-                Text("\(CalculratorView.buttonTitles[index])")
-                    .applyBasicTextModifier()
-                    
+            Button {
+                print(index)
+            } label: {
+                ZStack{
+                    Circle()
+                        .applyBasicButtonModifier(color:color)
+
+                    Text("\(CalculratorView.buttonTitles[index])")
+                        .applyBasicTextModifier()
+                        
+                        
+                }
             }
         }
     }
@@ -78,19 +89,31 @@ extension CalculratorView {
             self.index = index
         }
         var body: some View {
-            ZStack{
-                Circle()
-                    .applyBasicButtonModifier()
-                ZStack{
-                    RoundedRectangle(cornerRadius: 70.0)
-                        .applyBasicButtonModifier(width: CalculratorView.size*2 + 20.0, height: CalculratorView.size, color: .red)
-                        .offset(x: CalculratorView.size - 25)
-                        .opacity(0.5)
-                       
-                    Text("\(CalculratorView.buttonTitles[index])")
-                        .applyBasicTextModifier()
+            
+            Button {
+                print(index)
+            } label: {
+//                ZStack{
+//                    Circle()
+//                        .applyBasicButtonModifier()
+                ZStack {
+                        RoundedRectangle(cornerRadius: 70.0)
+                        
+                            
+                            .applyBasicButtonModifier(width: CalculratorView.size*2 + 20.0, height: CalculratorView.size, color: .gray)
+                            
+    //                        .opacity(0.5)
+//                            .offset(x: CalculratorView.size - 25)
+                    
+                        Text("\(CalculratorView.buttonTitles[index])")
+                            .applyBasicTextModifier()
+                            .offset(x:25 - CalculratorView.size)
                 }
-            }
+                
+//                }
+            }.offset(x: CalculratorView.size - 25)
+        
+            
         }
     }
 
