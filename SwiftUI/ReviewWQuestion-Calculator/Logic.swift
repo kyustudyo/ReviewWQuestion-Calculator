@@ -20,12 +20,18 @@ class Logic : ObservableObject {
     var stageValues : [Double] = []
     private var addedNumbersQueue : [String] = ["0"]
     func AddComponet(what component: String) {
-        
+        if checkComponent(component) == "C" {
+            print("aNQ",addedNumbersQueue)
+            results = "0.0"
+            lastNumber = "0.0"
+            addedNumbersQueue = ["0"]//진행중인 것 제거
+            
+        }
         if checkComponent(component) == "숫자" {//숫자일때
             addedNumbersQueue.append(component)
-            
             results = getNumber()
             lastNumber = results
+            print("aNQ",addedNumbersQueue)
             print("lastComponent:",lastNumber)
             print("stagesValue",stageValues)
         }
@@ -35,6 +41,7 @@ class Logic : ObservableObject {
             addedOperationQueue.append(component)
             print("addedOperationQueue:",addedOperationQueue)
             print("addedNumberQueue:",addedNumbersQueue)
+            
             if addedNumbersQueue.count != 0 {// 숫자안누르고 사칙연산 연타누를때
                 print("added 카운트 0 아님 ")
                 getNumber(component: "사칙연산")
@@ -68,14 +75,6 @@ class Logic : ObservableObject {
                 }
             }
             
-//            else if lastNumber != "merong" && lastOperation != "merong" {
-//
-//                let k  = stageValues[stageValues.count-1] + Double(lastNumber)!
-//                results = String(k)
-//                print(k)
-//                addedNumbersQueue.append(String(k))
-//                stageValues.append(k)
-//            }
             
         }
     }
@@ -88,8 +87,8 @@ class Logic : ObservableObject {
 //        case "=" :
 //            return "="
           
-        case "AC" :
-            return "AC"
+        case "C" :
+            return "C"
 
         case "+/-" :
             return "+/-"
@@ -185,4 +184,3 @@ class Logic : ObservableObject {
     }
     
 }
-
