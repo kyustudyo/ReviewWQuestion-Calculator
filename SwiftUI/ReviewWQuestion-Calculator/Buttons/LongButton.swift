@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+
+
+
+    
 struct widthLongButton : View {
     let index : Int
     init(index:Int = 16){
@@ -16,7 +20,7 @@ struct widthLongButton : View {
     var body: some View {
         
         Button {
-            print(CalculratorView.buttonTitles[index])
+            print(logic.calculatorLetters[index])
 //            logic.lastComponent = "0"
             logic.AddComponet(what: "0")
         } label: {
@@ -32,7 +36,7 @@ struct widthLongButton : View {
 //                        .opacity(0.5)
 //                            .offset(x: CalculratorView.size - 25)
                 
-                    Text("\(CalculratorView.buttonTitles[index])")
+                    Text("\(logic.calculatorLetters[index])")
                         .applyBasicTextModifier()
                         .offset(x:25 - CalculratorView.size)
             }

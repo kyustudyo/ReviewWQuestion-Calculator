@@ -29,7 +29,8 @@ extension CalculratorView {
 struct widthShordButton : View {
     let index : Int
     var clickedComponent : String {
-        CalculratorView.buttonTitles[index]
+        logic.calculatorLetters[index]
+        
     }
     @EnvironmentObject var logic : Logic
     //3,7,11,15,19
@@ -53,7 +54,7 @@ struct widthShordButton : View {
                 Circle()
                     .applyBasicButtonModifier(color:color)
 
-                Text("\(CalculratorView.buttonTitles[index])")
+                Text("\(logic.calculatorLetters[index])")
                     .applyBasicTextModifier()
                     
                     

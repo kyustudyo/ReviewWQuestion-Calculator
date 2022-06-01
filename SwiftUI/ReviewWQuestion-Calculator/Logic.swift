@@ -16,18 +16,31 @@ class Logic : ObservableObject {
     var lastOperation : String = "merong"
     
     var lastNumber : String = "merong"
- 
+    var calculatorLetters: [String] {
+        if clearPressed {
+            return  ["AC","+/-","%","/","7","8","9","X","4","5","6","-","1","2","3","+","0","",".","="]
+        }
+        else {
+            return ["C","+/-","%","/","7","8","9","X","4","5","6","-","1","2","3","+","0","",".","="]
+        }
+       
+    }
+    var clearPressed : Bool = true
     var stageValues : [Double] = []
     private var addedNumbersQueue : [String] = ["0"]
     func AddComponet(what component: String) {
-        if checkComponent(component) == "C" {
+        if checkComponent(component) == "C" || checkComponent(component) == "AC"{
             print("aNQ",addedNumbersQueue)
             results = "0.0"
             lastNumber = "0.0"
             addedNumbersQueue = ["0"]//진행중인 것 제거
+            if checkComponent(component) == "C" {
+                clearPressed = true//c를 눌러야만 ac가뜬다.
+            }
             
         }
         if checkComponent(component) == "숫자" {//숫자일때
+            clearPressed = false//숫자누르면 clear뜨므로
             addedNumbersQueue.append(component)
             results = getNumber()
             lastNumber = results
@@ -87,9 +100,10 @@ class Logic : ObservableObject {
 //        case "=" :
 //            return "="
           
-        case "C" :
+        case "C":
             return "C"
-
+        case "AC":
+            return "AC"
         case "+/-" :
             return "+/-"
 

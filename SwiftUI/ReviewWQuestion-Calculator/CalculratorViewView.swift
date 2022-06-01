@@ -9,7 +9,7 @@ struct CalculratorView: View {
     //extenstion 해서 사용하니, 다른 뷰에서 environment를 선언안해도 되는 장점.
     @EnvironmentObject var logic : Logic
     static let size:CGFloat = 70//줄이고싶다.
-    static let buttonTitles = StaticData.calculatorLetters
+//    static let buttonTitles = StaticData.calculatorLetters
     private var fixedItems: [GridItem] { [GridItem(.fixed(CGFloat(CalculratorView.size+10))),GridItem(.fixed(CGFloat(CalculratorView.size+10))),GridItem(.fixed(CGFloat(CalculratorView.size+10))),GridItem(.fixed(CGFloat(CalculratorView.size+10)))]}
     
     var body: some View {
@@ -77,5 +77,4 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
-
 
