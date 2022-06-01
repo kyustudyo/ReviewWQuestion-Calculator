@@ -13,32 +13,69 @@ class Logic : ObservableObject {
     
     @Published var results : String = "0"
     
-    var lastOperation : String = "0"
+    var lastOperation : String = "merong"
     
-    var lastComponent : String = "0"
+    var lastNumber : String = "merong"
  
     var stageValues : [Double] = []
     private var addedNumbersQueue : [String] = ["0"]
     func AddComponet(what component: String) {
         
-        if checkComponent(component) == "숫자" {
+        if checkComponent(component) == "숫자" {//숫자일때
             addedNumbersQueue.append(component)
             
             results = getNumber()
-            print(getNumber())
-//            print(getFrontNumber())
+            lastNumber = results
+            print("lastComponent:",lastNumber)
             print("stagesValue",stageValues)
         }
-        else if checkComponent(component) == "사칙연산" {
-
+        else if checkComponent(component) == "사칙연산" {//사칙연산일때
+            lastOperation = (component != "=") ? component : lastOperation
+//            print("lastOperation:",lastOperation)
             addedOperationQueue.append(component)
             print("addedOperationQueue:",addedOperationQueue)
+            print("addedNumberQueue:",addedNumbersQueue)
             if addedNumbersQueue.count != 0 {// 숫자안누르고 사칙연산 연타누를때
+                print("added 카운트 0 아님 ")
                 getNumber(component: "사칙연산")
                 isItPossibleTocalculate()
                 clearComponentsQueue(component:component)
                 print("stageValues",stageValues)
             }
+            else if addedNumbersQueue.count == 0{
+                if component == "=" {
+                    print("=가 왜 또 나와")
+                    
+                    if lastOperation != "merong" {
+                        var a:String = ""
+                        
+                        switch lastOperation {
+                        case "+" : a = String(stageValues[stageValues.count-1] + Double(lastNumber)!)
+                        case "-" : a = String(stageValues[stageValues.count-1] - Double(lastNumber)!)
+                        case "X" : a = String(stageValues[stageValues.count-1] * Double(lastNumber)!)
+                        case "/" : a = String(stageValues[stageValues.count-1] / Double(lastNumber)!)
+                        default : a = ""
+                        }
+                        results = a
+                        stageValues.append(Double(a)!)
+                    }
+                    
+                    
+                }
+                else {
+                    print("\(component) 또 눌렀누?")
+                    lastNumber = results
+                }
+            }
+            
+//            else if lastNumber != "merong" && lastOperation != "merong" {
+//
+//                let k  = stageValues[stageValues.count-1] + Double(lastNumber)!
+//                results = String(k)
+//                print(k)
+//                addedNumbersQueue.append(String(k))
+//                stageValues.append(k)
+//            }
             
         }
     }
@@ -86,12 +123,13 @@ class Logic : ObservableObject {
         }
         
         
-        print("숫자",Double(number))
+//        print("숫자",Double(number))
         
         return String(value)
 //
     }
     func clearComponentsQueue(component:String) {
+        
 
         addedNumbersQueue = []
     }
@@ -113,20 +151,38 @@ class Logic : ObservableObject {
     func calculate(operation: String) {
         var result:Double = 0
         switch operation {
+            
         case "+" : result = stageValues[stageValues.count-2] + stageValues[stageValues.count-1]
         case "-" : result = stageValues[stageValues.count-2] - stageValues[stageValues.count-1]
         case "X" : result = stageValues[stageValues.count-2] * stageValues[stageValues.count-1]
         case "/" : result = stageValues[stageValues.count-2] / stageValues[stageValues.count-1]
-        case "=" : result = stageValues[stageValues.count-1]
+        case "=" :
+            result = stageValues[stageValues.count - 1]
+            print("= 했다.")
+//            result = stageValues[stageValues.count-1] + Double(lastNumber)!
+//            result = calculate2(operation: lastOperation)
             
         default:
             print("not yet")
         }
+        
         stageValues[stageValues.count - 1] = result
         results = String(result)
         print("stageValues",stageValues)
+        
     }
-    
+    func calculate2(operation: String) -> Double {
+        var result = 0.0
+        switch operation {
+        case "+" : result = stageValues[stageValues.count-1] + Double(lastNumber)!
+        case "-" : result = stageValues[stageValues.count-1] - Double(lastNumber)!
+        case "X" : result = stageValues[stageValues.count-1] * Double(lastNumber)!
+        case "/" : result = stageValues[stageValues.count-1] / Double(lastNumber)!
+        default:
+            print("not yet")
+        }
+        return result
+    }
     
 }
 
