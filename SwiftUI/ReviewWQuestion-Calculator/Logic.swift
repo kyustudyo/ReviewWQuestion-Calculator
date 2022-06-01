@@ -10,10 +10,10 @@ import Foundation
 class Logic : ObservableObject {
     
     private var addedOperationQueue : [String] = []
-    var results : String = "0"
+    @Published var results : String = "0"
     var lastOperation : String = "0"
     
-    @Published var lastComponent : String = "0"
+    var lastComponent : String = "0"
  
     var stageValues : [Double] = []
     private var addedNumbersQueue : [String] = ["0"]
@@ -22,16 +22,21 @@ class Logic : ObservableObject {
         
         if checkComponent(component) == "숫자" {
             addedNumbersQueue.append(component)
+            results = getNumber()
             print(getNumber())
 //            print(getFrontNumber())
+            print(stageValues)
         }
         else if checkComponent(component) == "사칙연산" {
 
-
             addedOperationQueue.append(component)
-            print(getNumber(component: "사칙연산"))
-            isItPossibleTocalculate()
-            clearComponentsQueue()
+            if addedNumbersQueue.count != 0 {// 숫자안누르고 사칙연산 연타누를때
+                getNumber(component: "사칙연산")
+                isItPossibleTocalculate()
+                clearComponentsQueue(component:component)
+                print(stageValues)
+            }
+            
         }
     }
     func checkComponent(_ component: String) -> String {
@@ -60,7 +65,7 @@ class Logic : ObservableObject {
 //            getFrontNumber()
         }
     }
-    func getNumber(component:String = "숫자")->Double{
+    func getNumber(component:String = "숫자")->String{
         var number : String = ""
         for component in addedNumbersQueue {
             number.append(component)
@@ -68,6 +73,7 @@ class Logic : ObservableObject {
         let value = Double(number)!
         
         if component == "사칙연산" {
+            print("stage올라갈거\(value)")
             stageValues.append(value)
             print(stageValues)
         }
@@ -75,11 +81,12 @@ class Logic : ObservableObject {
         
         print(Double(number))
         
-        return value
+        return String(value)
 //
     }
-    func clearComponentsQueue() {
-        addedNumbersQueue = ["0"]
+    func clearComponentsQueue(component:String) {
+
+        addedNumbersQueue = []
     }
     func isItPossibleTocalculate() {
 //        if stageValues.count >= 2 {
@@ -87,6 +94,7 @@ class Logic : ObservableObject {
                 print("계산할것:",addedOperationQueue[addedOperationQueue.endIndex-2])
                 calculate(operation:addedOperationQueue[addedOperationQueue.endIndex-2])
             }
+        
             else {
                 print("아직 계산못해")
             }
@@ -105,7 +113,8 @@ class Logic : ObservableObject {
             print("not yet")
         }
         stageValues[stageValues.count - 1] = result
-        print(result)
+        results = String(result)
+        print(stageValues)
     }
     
     
